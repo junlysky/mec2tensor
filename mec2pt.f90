@@ -24,10 +24,9 @@ write(*,*)line
 do i=1,total-1
    read(520,*)lon,lat,ANGS(1:3)
    write(*,81)lon,lat,ANGS(1:3)
-
-Call mec2pt(ANGS,ANBTP,ANGS2,PTTP,MOMTEN)
-   write(*,81)lon,lat,ANGS,ANGS2,MOMTEN,PTTP
-   write(521,81)lon,lat,ANGS,ANGS2,MOMTEN,PTTP 
+   Call mec2pt(ANGS,ANBTP,ANGS2,PTTP,MOMTEN)
+   write(*,81)lon,lat,ANGS,ANGS2(2),ANGS2(1),ANGS2(3),MOMTEN,PTTP
+   write(521,81)lon,lat,ANGS,ANGS2(2),ANGS2(1),ANGS2(3),MOMTEN,PTTP 
 81 format(18F8.2)
 end do
 
