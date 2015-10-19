@@ -1,0 +1,61 @@
+Subroutine V2TRPL(XYZ,TRPL)
+implicit none
+
+!	Transforms from XYZ components of a unit vector to
+!	the trend and plunge for the vector.
+!	Trend is the azimuth (clockwise from north looking down)
+!	Plunge is the downward dip measured from the horizontal.
+!	All angles in radians
+!	X is north, Y is east, Z is down
+!	If the component of Z is negative (up), the plunge,TRPL(2),
+!	  is replaced by its negative and the trend, TRPL(1),
+!	  Is changed by PI.
+!	The trend is returned between 0 and 2*PI, the plunge
+!	  between 0 and PI/2.
+!	If xyz(3) = -1.0, make the trend PI.  Made
+!	  consistency in the roundoff -- all are now 0.0001
+!	plunge is 90 degrees
+
+
+
+real XYZ(3),TRPL(2)
+real c,s
+real,parameter :: PI = 3.141592653
+integer j
+
+do j=1,3
+   if (abs(xyz(j)) .le. 0.0001) xyz(j) = 0.0
+   IF (ABS(ABS(XYZ(j))-1.0).LT.0.0001) xyz(j)=xyz(j)/abs(xyz(j))
+end do
+IF (ABS(XYZ(3)) .eq. 1.0) THEN 
+!	plunge is 90 degrees
+   if (xyz(3) .lt. 0.0) then
+      trpl(1) = PI
+   else
+      TRPL(1) = 0.0
+   end if
+   TRPL(2) = 0.5*PI
+   RETURN
+END IF
+IF (ABS(XYZ(1)) .LT. 0.0001) THEN
+   IF (XYZ(2) .GT. 0.0) THEN
+      TRPL(1) = PI/2.
+   ELSE IF (XYZ(2) .LT. 0.0) THEN
+      TRPL(1) = 3.0*PI/2.0
+   ELSE
+      TRPL(1) = 0.0
+   END IF
+ELSE
+   TRPL(1) = ATAN2(XYZ(2),XYZ(1))
+END IF
+C = COS(TRPL(1))
+S = SIN(TRPL(1))
+IF (ABS(C) .GE. 0.1) TRPL(2) = ATAN2(XYZ(3),XYZ(1)/C)
+IF (ABS(C) .LT. 0.1) TRPL(2) = ATAN2(XYZ(3),XYZ(2)/S)
+IF (TRPL(2) .LT. 0.0) THEN
+   TRPL(2) = -TRPL(2)
+   TRPL(1) = TRPL(1) - PI
+END IF
+IF (TRPL(1) .LT. 0.0) TRPL(1) = TRPL(1) + 2.0*PI
+RETURN
+end subroutine V2TRPL
