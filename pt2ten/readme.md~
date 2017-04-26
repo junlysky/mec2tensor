@@ -1,4 +1,0 @@
-#
-## input data format is:
-   lon lat p-trend p-plugne t-trend t-plunge				
-### trend is the azimuth (clockwise from north looking down)
