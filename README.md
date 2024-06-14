@@ -1,8 +1,6 @@
-# mec2tensor  矩张量参数转换工具
-
-##1.  使用fortran90标准，由震源机制解一个断层面的strike,dip,rake计算地震矩张量的全部信息，震源模型为双力偶模型。
-##2.  具有批量处理的功能。 
-
-##3.  mec2ten: compute tensor using mechanims   
-##4.  pt2ten:  compute tensor using p-azi p-plunge t-azi t-plunge   
-##5.  tensor2mec : compute mechanims and PT using tensor     
+# 震源机制及矩张量参数转换的计算小工具
+##功能
+###1. mec2ten： 假设震源模型为双力偶模型，由震源机制节面（任意1个节面的strike,dip,rake）解计算地震矩张量的全部参数。
+###2. pt2ten：  假设震源模型为双力偶模型，由PT轴信息计算震源机制的节面解及其对应矩张量参数。
+###3. tensor2mec：  假设震源模型为双力偶模型，由地震矩张量计算节面解及PT轴参数。 
+###4. 计算单个震源机制参数，并绘制震源球
