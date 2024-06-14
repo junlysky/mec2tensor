@@ -7,7 +7,7 @@
 ```
 gfortran mec2tensor.f90 -o mec2ten
 ```
-#### 输入文件名词为：mec.d
+#### 编译成功，生成二进制程序mec2ten。 执行mec2ten时，须有输入文件，输入文件的名称为：mec.d
 #### mec.d的数据格式：lon lat strike dip rake
 #### 执行程序后，输出文件为：mecinfo.dat  
 
