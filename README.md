@@ -4,9 +4,9 @@
 #### 假设震源模型为双力偶模型，由震源机制节面（任意1个节面的strike,dip,rake）解计算地震矩张量的全部参数。
 #### 使用方法：
 #### 编译mec2ten.f90
-'''
+```
 gfortran mec2tensor.f90 -o mec2ten
-'''
+```
 #### 输入文件名词为：mec.d
 #### mec.d的数据格式：lon lat strike dip rake
 #### 执行程序后，输出文件为：mecinfo.dat  
