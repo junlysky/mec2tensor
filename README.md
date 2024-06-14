@@ -12,7 +12,10 @@ gfortran mec2tensor.f90 -o mec2ten
 ./mec2ten mec.dat
 ```
 
-#### mec.d的数据格式：lon lat strike dip rake
+#### mec.d的数据格式：
+```
+lon lat strike dip rake
+```
 #### 执行程序后，输出文件为：mecinfo.dat  
 
 ### 2. pt2ten：  
